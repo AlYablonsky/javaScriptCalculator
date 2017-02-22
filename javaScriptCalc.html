@@ -1,0 +1,63 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Project #7 Java Script Calculator</title>
+        <meta name="description" content="Java Script Calculator Project">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Oswald|Prompt" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+        <link rel="stylesheet" href="javaScriptCalc.css">  
+        
+<!-- 
+Standard Button Layout for Calculator
+-->    
+    </head>
+    <body>
+		<div class = "text-center">
+			<h1>JavaScript Calculator Free Code Camp</h1>
+			<h2>By: Al Yablonsky</h2>
+		</div>
+		<div id ="calcOutput">
+			<div id="calcDisplay">
+			<span id= "steps"></span>
+			<br/><span id= "steps1"></span>
+			</div>
+		</div>
+		<div class="text-center" id="calculator">
+			<div>
+			<button class="btn btn-danger" id="deleteAll">AC</button>
+			<button class="btn btn-danger" id="deleteLast">CE</button>
+			<button class="btn btn-primary" id="/">/</button>
+			<button class="btn btn-primary" id="*">*</button>
+			</div>
+			<div>
+			<button class="btn btn-primary" id="7">7</button>
+			<button class="btn btn-primary" id="8">8</button>
+			<button class="btn btn-primary" id="9">9</button>
+			<button class="btn btn-primary" id="-">-</button>
+			</div>
+			<div>
+			<button class="btn btn-primary" id="4">4</button>
+			<button class="btn btn-primary" id="5">5</button>
+			<button class="btn btn-primary" id="6">6</button>
+			<button class="btn btn-primary" id="+">+</button>
+			</div>
+			<div>
+			<button class="btn btn-primary" id="1">1</button>
+			<button class="btn btn-primary" id="2">2</button>
+			<button class="btn btn-primary" id="3">3</button>
+			<button class="btn btn-primary" id=".">.</button>
+			</div>
+			<div>
+			<button class="btn btn-primary bigButton" id="0">0</button>
+			<button class="btn btn-primary bigButton" id="total">=</button>
+			</div>
+		</div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+        <script src="javaScriptCalc.js"></script>
+    </body>
+</html>
