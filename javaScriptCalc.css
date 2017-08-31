@@ -28,9 +28,7 @@ h2 {
 	height: 125px;      
 	border-top-left-radius: 2em;
 	border-top-right-radius: 2em;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 65px;
+	margin: 65px auto 0 auto;
 	padding-top: 20px;
 	color: black;
 	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3) , inset -10px -10px 10px 10px brown;  
@@ -65,7 +63,7 @@ h2 {
 	
 }
 
-/* Styling for the butons of the calcular */
+/* Styling for the buttons of the calcular */
 button  {
 	margin: 10px;     
 	width: 55px;    

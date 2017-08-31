@@ -1,4 +1,4 @@
-// Comments
+
 $(document).ready(function () {
     
   // Stores user input for later calculations
@@ -24,12 +24,11 @@ $(document).ready(function () {
 	
 // Numbers for validation	
 	var nums = [0,1,2,3,4,5,6,7,8,9];
-	
+
+
 	
 // Updates the result 
 	function getValue(input){
-		
-// Latest Stuff
 		
 	
 	// Case where inputs.length = 1 and inputs[0] ==="" and input is operator1 "+" "-" "*" "/"  => error
@@ -126,11 +125,66 @@ $(document).ready(function () {
 		update();
 	} // End of getValue function
 	
+	
+	// Calculate function
+	
+	function calculateResult (aString){
+		
+	var	floatArray = [];
+	var oprArray = [];
+	var expressionArray = [];	
+		
+		floatArray = aString.split(new RegExp('[-+*/]', 'g'));
+		
+		for (var i =0; i < totalString.length; i++){
+			
+			if (aString.charAt(i) === '+' || aString.charAt(i) === '-' || aString.charAt(i) === '*' || aString.charAt(i) === '/') {
+				oprArray.push(aString.charAt(i));
+			}
+		}
+		
+		let len = floatArray.length;
+		for (var i = 0; i < len; i++){
+			expressionArray.push(Number(floatArray[i]));
+			if (i < len-1){
+			   expressionArray.push(oprArray[i]);
+			}
+		}
+		
+		
+		let tempVar;
+		    for ( var i = 1; i < expressionArray.length - 1; i++){
+			
+			    if ( expressionArray[i] === '*') { 
+				    tempVar = expressionArray[i-1] * expressionArray[i+1]
+			        expressionArray.splice(i-1, 3, tempVar );
+					i--;
+				}
+				else if ( expressionArray[i] === '/' ) { 
+				    tempVar = expressionArray[i-1] / expressionArray[i+1]
+			        expressionArray.splice(i-1, 3, tempVar );
+					i--;
+				}
+			}
+			for ( var i = 1; i < expressionArray.length - 1; i++){
+			
+			    if ( expressionArray[i] === '+' ) { 
+				    tempVar = expressionArray[i-1] + expressionArray[i+1]
+			        expressionArray.splice(i-1, 3, tempVar );
+					i--;
+				}
+				else if ( expressionArray[i] === '-' ) { 
+				    tempVar = expressionArray[i-1] - expressionArray[i+1]
+			        expressionArray.splice(i-1, 3, tempVar );
+					i--;
+				}
+			}
+		return expressionArray[0];
+	}
+	
 // Updates the output to most current value
 	function update(){
 		totalString = inputs.join("");
-
-		
 		$("#steps").html(totalString);
 		$("#steps1").html(inputs);
 	
@@ -139,17 +193,17 @@ $(document).ready(function () {
 // Evaluates the result but does not print it	
 	function getTotal(){
 		totalString = inputs.join("");
-	
+	    
 		// Handle division by 0, exit program
-		if (isFinite(eval(totalString)) === false ) {
+		if (isFinite(calculateResult(totalString)) === false ) {
 			inputs =[""];
 			$("#steps").html("Undefined: Division by 0");
 			$("#steps1").html(inputs);
 			return;
 		}
-	
+			
 		// Handle out of bounds values outside +/-1 1e21
-		else if (Math.abs(eval(totalString)) >= 1e21) {
+		else if (Math.abs(calculateResult(totalString)) >= 1e21) {
 			
 			inputs =[""];
 				$("#steps").html("Value out of bounds");
@@ -157,15 +211,18 @@ $(document).ready(function () {
 				return;	
 		}
 		
+	
 		// Standard output
 		else {
 			isMutable = true;
-			$("#steps").html(eval(totalString));
+			$("#steps").html(calculateResult(totalString));
 			inputs = [""];
 		}
 		// Replacing the input array values with the obtained calculated result 
-		inputs.push(eval(totalString));
-	} 
+			
+		 inputs.push(calculateResult(totalString));
+		
+} 
 	
 // Code for button click function	
 	
@@ -176,16 +233,12 @@ $(document).ready(function () {
 			inputs = [""];
 			update();
 			isDecimal = false;
-			isMutable = false;
-			
+			isMutable = false;	
 		}   
-		
-		
-		
+				
 		// Remove last element CE button
 		else if (this.id === "deleteLast") {
 	
-			
 			var popVal = inputs.pop();
 			
 			isMutable = false;
@@ -239,7 +292,7 @@ $(document).ready(function () {
 				
 		}
 			
-	});  // End of on.click code
+	});  
 	
-});  // corresponds to document ready
+});  
     
