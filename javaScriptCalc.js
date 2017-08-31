@@ -2,28 +2,28 @@
 $(document).ready(function () {
     
   // Stores user input for later calculations
-    var inputs = [""];
+    let inputs = [""];
 	
 // String to store current input string	
-    var totalString;
+    let totalString;
   
 // Operators array for validation without the "."	
     
-	var operators1 = ["+", "-", "*", "/"];
+	let operators1 = ["+", "-", "*", "/"];
 
 // Operators array for validation with the "." 	
 
-	var operators2 = ["."];
+	let operators2 = ["."];
 	
 // Boolean flag for decimal input false if "." is not present, true otherwise
 	
-	var isDecimal = false;
+	let isDecimal = false;
 	
 // Boolean flag for number obtained from total (after pressing "=" sign) , if true pressing a number key or decimal resets the value	
-	var isMutable = false;
+	let isMutable = false;
 	
 // Numbers for validation	
-	var nums = [0,1,2,3,4,5,6,7,8,9];
+	let nums = [0,1,2,3,4,5,6,7,8,9];
 
 
 	
@@ -130,13 +130,13 @@ $(document).ready(function () {
 	
 	function calculateResult (aString){
 		
-	var	floatArray = [];
-	var oprArray = [];
-	var expressionArray = [];	
+	let	floatArray = [];
+	let oprArray = [];
+	let expressionArray = [];	
 		
 		floatArray = aString.split(new RegExp('[-+*/]', 'g'));
 		
-		for (var i =0; i < totalString.length; i++){
+		for (let i =0; i < totalString.length; i++){
 			
 			if (aString.charAt(i) === '+' || aString.charAt(i) === '-' || aString.charAt(i) === '*' || aString.charAt(i) === '/') {
 				oprArray.push(aString.charAt(i));
@@ -144,7 +144,7 @@ $(document).ready(function () {
 		}
 		
 		let len = floatArray.length;
-		for (var i = 0; i < len; i++){
+		for (let i = 0; i < len; i++){
 			expressionArray.push(Number(floatArray[i]));
 			if (i < len-1){
 			   expressionArray.push(oprArray[i]);
@@ -152,30 +152,30 @@ $(document).ready(function () {
 		}
 		
 		
-		let tempVar;
-		    for ( var i = 1; i < expressionArray.length - 1; i++){
+		let templet;
+		    for ( let i = 1; i < expressionArray.length - 1; i++){
 			
 			    if ( expressionArray[i] === '*') { 
-				    tempVar = expressionArray[i-1] * expressionArray[i+1]
-			        expressionArray.splice(i-1, 3, tempVar );
+				    templet = expressionArray[i-1] * expressionArray[i+1]
+			        expressionArray.splice(i-1, 3, templet );
 					i--;
 				}
 				else if ( expressionArray[i] === '/' ) { 
-				    tempVar = expressionArray[i-1] / expressionArray[i+1]
-			        expressionArray.splice(i-1, 3, tempVar );
+				    templet = expressionArray[i-1] / expressionArray[i+1]
+			        expressionArray.splice(i-1, 3, templet );
 					i--;
 				}
 			}
-			for ( var i = 1; i < expressionArray.length - 1; i++){
+			for ( let i = 1; i < expressionArray.length - 1; i++){
 			
 			    if ( expressionArray[i] === '+' ) { 
-				    tempVar = expressionArray[i-1] + expressionArray[i+1]
-			        expressionArray.splice(i-1, 3, tempVar );
+				    templet = expressionArray[i-1] + expressionArray[i+1]
+			        expressionArray.splice(i-1, 3, templet );
 					i--;
 				}
 				else if ( expressionArray[i] === '-' ) { 
-				    tempVar = expressionArray[i-1] - expressionArray[i+1]
-			        expressionArray.splice(i-1, 3, tempVar );
+				    templet = expressionArray[i-1] - expressionArray[i+1]
+			        expressionArray.splice(i-1, 3, templet );
 					i--;
 				}
 			}
@@ -239,7 +239,7 @@ $(document).ready(function () {
 		// Remove last element CE button
 		else if (this.id === "deleteLast") {
 	
-			var popVal = inputs.pop();
+			let popVal = inputs.pop();
 			
 			isMutable = false;
 			
@@ -254,7 +254,7 @@ $(document).ready(function () {
 			
 			else if (operators1.includes(popVal) === true) {
 				
-				var iCount = 0;
+				let iCount = 0;
 				isDecimal = false;
 				while ( operators1.includes(inputs[inputs.length - (1 + iCount)]) === false && iCount <= inputs.length - 1 ){
 					
